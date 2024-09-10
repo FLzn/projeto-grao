@@ -1,7 +1,7 @@
-import { Repository } from "typeorm";
 import { BadRequestException } from "@nestjs/common";
-import { CreateRestaurantDto } from "../restaurants/dto/create-restaurant.dto";
+import { Repository } from "typeorm";
 import { RestaurantEntity } from "../restaurants/entities/restaurant.entity";
+import { CreateRestaurantDto } from "../restaurants/dto/create-restaurant.dto";
 import { isValidCnpj } from "src/utils/cnpj.validator";
 
 export async function validateRestaurant(

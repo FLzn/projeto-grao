@@ -1,4 +1,5 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsEnum, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { ProductType } from "../../enums/product-type.enum";
 
 export class CreateProductDto {
   @IsString()
@@ -9,6 +10,10 @@ export class CreateProductDto {
 
   @IsString()
   image: string;
+
+  @IsEnum(ProductType)
+  @IsNotEmpty()
+  type: ProductType;
 
   @IsString()
   description: string;

@@ -1,5 +1,5 @@
-import { IsNotEmpty, IsNotEmptyObject, IsNumber, IsObject, IsPhoneNumber, IsString, Matches } from "class-validator";
-import { AddressDto } from "src/users/dto/create-user.dto";
+import { IsNotEmpty, IsNotEmptyObject, IsNumber, IsObject, IsString, Matches } from "class-validator";
+import { AddressDto } from "src/common/dto/address.dto";
 
 export class CreateRestaurantDto {
   @IsString()

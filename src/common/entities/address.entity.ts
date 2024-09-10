@@ -1,6 +1,6 @@
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
 import { RestaurantEntity } from '../../restaurants/entities/restaurant.entity';
 import { UserEntity } from '../../users/entities/user.entity';
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
 
 @Entity('addresses')
 export class AddressEntity {

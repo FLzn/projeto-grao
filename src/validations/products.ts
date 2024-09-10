@@ -1,7 +1,7 @@
-import { Repository } from "typeorm";
 import { BadRequestException } from "@nestjs/common";
+import { Repository } from "typeorm";
 import { CreateProductDto } from "src/products/dto/create-product.dto";
-import { ProductEntity } from "src/products/entities/product.entity";
+import { ProductEntity } from "../products/entities/product.entity";
 
 export async function validateProduct(
   productRequest: CreateProductDto,

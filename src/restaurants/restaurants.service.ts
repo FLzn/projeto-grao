@@ -1,11 +1,10 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
-import { validateRestaurant } from 'src/validations/restaurant';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RestaurantEntity } from './entities/restaurant.entity';
 import { Repository } from 'typeorm';
+import { validateRestaurant } from 'src/validations/restaurant';
+import { RestaurantEntity } from './entities/restaurant.entity';
 import { AddressEntity } from '../common/entities/address.entity';
+import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { RateRestaurantDto } from './dto/rate-restaurant.dto';
 
 @Injectable()
@@ -103,12 +102,4 @@ export class RestaurantsService {
       throw error;
     }
   }
-
-  // update(id: number, updateRestaurantDto: UpdateRestaurantDto) {
-  //   return `This action updates a #${id} restaurant`;
-  // }
-
-  // remove(id: number) {
-  //   return `This action removes a #${id} restaurant`;
-  // }
 }

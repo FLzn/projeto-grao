@@ -43,11 +43,4 @@ export class AuthService {
   getJwt(jwt: string) {
     return this.jwtService.decode(jwt);
   }
-
-  // getUserIdInsideJwt(jwtAuthorization: string) {
-  //   const token = jwtAuthorization.split(' ')[1];
-  //   const idUser = this.getJwt(token);
-  //   return idUser;
-  // }
-
 }

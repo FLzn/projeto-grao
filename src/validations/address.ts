@@ -1,6 +1,6 @@
 import { BadRequestException } from "@nestjs/common";
-import { CreateUserDto } from "../users/dto/create-user.dto";
 import { isEmpty } from "class-validator";
+import { CreateUserDto } from "../users/dto/create-user.dto";
 
 export async function validateAddress(
   addressRequest: Partial<CreateUserDto>
@@ -30,7 +30,7 @@ function validateStreet(street: string): void {
 
 function validateNeighborhood(neighborhood: string): void {
   if (neighborhood.trim().length === 0) {
-    throw new BadRequestException('Rua não informada.');
+    throw new BadRequestException('Bairro não informado.');
   }
 }
 

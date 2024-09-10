@@ -1,15 +1,13 @@
-import { BadRequestException, HttpException, HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { validateUser } from 'src/validations/user';
-// import UserErrorsDto from './dto/user-errors.dto';
-import { UserEntity } from './entities/user.entity';
-import { Repository } from 'typeorm';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { validateUser } from 'src/validations/user';
 import { validateAddress } from 'src/validations/address';
-import { AddressEntity } from '../common/entities/address.entity';
+import { CreateUserDto } from './dto/create-user.dto';
 import { MessageDto } from 'src/common/dto/message.dto';
+import { UserEntity } from './entities/user.entity';
+import { AddressEntity } from '../common/entities/address.entity';
 
 @Injectable()
 export class UsersService {
@@ -22,7 +20,7 @@ export class UsersService {
     private readonly addressEntity: Repository<AddressEntity>
   ) { }
 
-  async create(createUserDto: CreateUserDto): Promise<{ message: string }> {
+  async create(createUserDto: CreateUserDto): Promise<MessageDto> {
     try {
       const { address, ...user } = createUserDto;
       await validateUser(createUserDto, this.usersEntity);
@@ -44,7 +42,6 @@ export class UsersService {
 
       await this.addressEntity.save(newAddressEntity);
       return { message: 'Usuário salvo com sucesso!' };
-
     } catch (error) {
       throw error;
     }
@@ -105,21 +102,5 @@ export class UsersService {
     } catch (error) {
       throw error;
     }
-  }
-
-  findAll() {
-    return `This action returns all users`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
   }
 }

@@ -1,23 +1,6 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsNotEmptyObject, IsObject, IsOptional, IsString } from "class-validator";
 import { Role } from "../../enums/role.enum";
-
-export class AddressDto {
-  @IsString()
-  street: string;
-
-  @IsString()
-  neighborhood: string;
-
-  @IsString()
-  number: string;
-
-  @IsString()
-  zipCode: string;
-
-  @IsString()
-  @IsOptional()
-  complement: string;
-}
+import { AddressDto } from "src/common/dto/address.dto";
 
 export class CreateUserDto {
   @IsString()

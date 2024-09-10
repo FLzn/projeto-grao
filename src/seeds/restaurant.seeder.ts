@@ -1,9 +1,9 @@
-import { RestaurantEntity } from "../restaurants/entities/restaurant.entity";
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
+import { RestaurantEntity } from "../restaurants/entities/restaurant.entity";
 
 export class RestaurantSeeder implements Seeder {
-  async run(dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<any> {
+  async run(dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<void> {
     const restaurantRepository = dataSource.getRepository(RestaurantEntity);
 
     const restaurantData: Partial<RestaurantEntity>[] = [

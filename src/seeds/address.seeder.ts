@@ -1,11 +1,11 @@
+import { DataSource } from "typeorm";
+import { Seeder, SeederFactoryManager } from "typeorm-extension";
 import { UserEntity } from '../users/entities/user.entity';
 import { AddressEntity } from '../common/entities/address.entity';
 import { RestaurantEntity } from "../restaurants/entities/restaurant.entity";
-import { DataSource } from "typeorm";
-import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
 export class AddressSeeder implements Seeder {
-  async run(dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<any> {
+  async run(dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<void> {
     const addressRepository = dataSource.getRepository(AddressEntity);
     const restaurantRepository = dataSource.getRepository(RestaurantEntity);
     const userRepository = dataSource.getRepository(UserEntity);

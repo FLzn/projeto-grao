@@ -1,7 +1,7 @@
+import { BadRequestException } from "@nestjs/common";
 import { Repository } from "typeorm";
-import { CreateUserDto } from "../users/dto/create-user.dto";
 import { UserEntity } from "src/users/entities/user.entity";
-import { BadRequestException } from "@nestjs/common"; // Import para exceções claras
+import { CreateUserDto } from "../users/dto/create-user.dto";
 import { Role } from "../enums/role.enum";
 
 export async function validateUser(

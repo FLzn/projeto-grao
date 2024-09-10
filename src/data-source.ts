@@ -1,6 +1,6 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
-import * as dotenv from 'dotenv';
 import { SeederOptions } from 'typeorm-extension';
+import * as dotenv from 'dotenv';
 import { MainSeeder } from './seeds/main.seeder';
 import { UserEntity } from './users/entities/user.entity';
 import { RestaurantEntity } from './restaurants/entities/restaurant.entity';

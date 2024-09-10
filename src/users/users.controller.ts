@@ -1,10 +1,9 @@
 import { Controller, Post, Body, UseGuards, Patch, Param } from '@nestjs/common';
-import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { Role } from '../enums/role.enum';
+import { MessageDto } from 'src/common/dto/message.dto';
 import { Authentication } from 'src/custom-decorators/authentication.decorator';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { MessageDto } from 'src/common/dto/message.dto';
+import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
@@ -24,24 +23,4 @@ export class UsersController {
     };
     return this.usersService.selectMainAddress(body);
   }
-
-  // @Get()
-  // findAll() {
-  //   return this.usersService.findAll();
-  // }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.usersService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.usersService.update(+id, updateUserDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.usersService.remove(+id);
-  // }
 }
