@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
 import { validateProduct } from '../validations/products';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProductEntity } from './entities/product.entity';
-import { Repository } from 'typeorm';
 import { MessageDto } from 'src/common/dto/message.dto';
+import { ProductType } from 'src/enums/product-type.enum';
 
 @Injectable()
 export class ProductsService {
@@ -33,5 +34,15 @@ export class ProductsService {
     } catch (error) {
       throw error;
     }
+  }
+
+  async getFilteredProducts(type: ProductType): Promise<ProductEntity[]> {
+    const products = this.productEntity.createQueryBuilder('products');
+
+    if (type) {
+      products.where('type = :type', { type })
+    }
+
+    return await products.getMany();
   }
 }

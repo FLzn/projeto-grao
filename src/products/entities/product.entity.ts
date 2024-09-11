@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { RestaurantEntity } from "../../restaurants/entities/restaurant.entity";
 import { ProductType } from "../../enums/product-type.enum";
 
@@ -43,4 +43,10 @@ export class ProductEntity {
     onDelete: 'CASCADE',
   })
   restaurant: RestaurantEntity;
+
+  @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 }

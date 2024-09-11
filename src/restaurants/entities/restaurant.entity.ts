@@ -52,15 +52,15 @@ export class RestaurantEntity {
   })
   icon: string;
 
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
   @OneToOne(() => AddressEntity, (address) => address.restaurant)
   address: AddressEntity;
 
   @OneToMany(() => ProductEntity, (product) => product.restaurant)
   products: ProductEntity[];
+
+  @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 }

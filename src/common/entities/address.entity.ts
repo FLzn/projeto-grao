@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { RestaurantEntity } from '../../restaurants/entities/restaurant.entity';
 import { UserEntity } from '../../users/entities/user.entity';
 
@@ -37,4 +37,10 @@ export class AddressEntity {
   })
   @JoinColumn({ name: 'restaurantId' })
   restaurant: RestaurantEntity;
+
+  @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 }
